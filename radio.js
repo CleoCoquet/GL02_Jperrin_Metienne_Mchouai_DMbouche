@@ -5,3 +5,5 @@ var Radio = {
     }
     }
     module.exports = Radio
+
+    console.log("Cyan level checked".cyan)
