@@ -1,12 +1,16 @@
 var Seance = require('./Seance');
 
-var Matiere = function(nomMatiere, seance)
+var Matiere = function(nomMatiere, seances)
 {
     this.nomMatiere = nomMatiere;
-    this.seances = [].concat(seance);
+    this.seances = [].concat(seances);
 
 }
 
-//TODO addseance
+//addSeance permet d'ajouter une séance a la matière
+Matiere.prototype.addSeance = function(seance)
+{
+    this.seances.push(seance);
+};
 
 module.exports = Matiere;

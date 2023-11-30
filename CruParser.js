@@ -3,13 +3,11 @@ var Seance = require('./Seance');
 
 
 //CruParser
-var CruParser = function(sTokenize, sParsedSymb)
+var CruParser = function()
 {
     this.parsedMatiere = [];
-    //a voir pour changer de matiere/ bien les séparer symbole de fin. Page = fin de fichier
-    this.symb = ["+","1","P","H","S","Page"];
-    this.showTokenize = sTokenize;
-    this.showParsedSymbols = sParsedSymb;
+    this.symb = ["+","1","P","H","S"];
+    
 }
 
 //Parser procedure
@@ -21,7 +19,7 @@ CruParser.prototype.tokenize = function(data)
     var separator = /(\r\n|,|=)/;
     data = data.split(separator);
     //dégager les déparateurs du résultat
-    data = data.filter((val, idx) => !val.match(separator));
+    data = data.filter((val) => !val.match(separator));
     return data;
 }
 
@@ -29,102 +27,102 @@ CruParser.prototype.tokenize = function(data)
 CruParser.prototype.parse = function(data)
 {
     var tData = this.tokenize(data);
-    console.log(tData);
+    //console.log(tData);
     this.listMatiere(tData);
 }
 
-
-//lire et retourner le premier symbole de l'input, shift => retire le premier elt de input 
-CruParser.prototype.next = function(input)
+//checkplus regarde le 1er caractere du 1er elt et regarde si c'est un plus sinon il taige le 1 elt et se rappelle 
+CruParser.prototype.checkPlus = function(input)
 {
-    var curS = input.shift();
-    if(this.showParsedSymbols){
-		console.log(curS);
-	}
-	return curS
+    if(input[0][0] == "+")
+    {
+        //console.log("+ trouve");
+        
+        return true; 
+    }
+    else 
+    {
+        var taige = input.shift();
+        //console.log("on degage : " + taige);
+        if(input.length != 0)
+        {
+            this.checkPlus(input);
+        }  
+    }return false;
 }
 
-//accept  verifier si le param est dans les symb du parser 
-CruParser.prototype.accept = function(s)
+//verifie si s est pareil que le 1er elt et shift 1 fois il ne reste plus qu'a ajoute le 1er elt au bonne endroit 
+CruParser.prototype.check = function (s, input)
 {
-    var idx = this.symb.indexOf(s);
-    if(idx === -1)
+    if(s == input[0])
+    {
+        input.shift();
+        return true;
+    }else 
     {
         return false;
     }
-    return idx;
+
 }
 
-//check  verifier si s est le meme que le premier de ma chaine restante (input)
-CruParser.prototype.check = function(s, input)
-{
-    if(this.accept(s) == this.accept(input[0]))
-    {
-        return true;
-    }
-    return false; 
-}
-
-
-
-//TODO expect
-//expect sert a passer un index dans input grace a next et a le comparer au symbole précédent la valeur a garder
-CruParser.prototype.expect = function(s, input)
-{
-    if(s == this.next(input))
-    {
-        return true;
-    }else{
-
-    }
-    return false;
-}
 
 //parser Rules
-
-//TODO construction des objets
-// listeMatiere = *Matiere "Page"
 CruParser.prototype.listMatiere = function(input)
 {
+    //je check un plus dans le premier elt du string jusqu'a en trouvé 1
+    this.checkPlus(input);
+    //les deux lignes suivantes c'est pour tej l'exemple de matiere au debut de chaque fichier 
+    input.shift();
+    this.checkPlus(input);
+    //a ce niveua je dois etre pret a choper des matiere 
     this.Matiere(input);
-    this.expect("Page", input);
 }
 
-//Matiere = "+nomMatiere" *Seance
-CruParser.prototype.matiere = function(input)
+CruParser.prototype.Matiere = function(input)
 {
-    //ce que j'attend
-    if(this.check("+", input[0][0]))
+    let nomMatiere = input.shift().substring(1);
+    var matiere = new Matiere(nomMatiere, []);
+    while(input[0] == 1)
     {
-        this.expect("+", input[0]);
-        var m = new Matiere(input[0], [])
-        //lancé séance qui doit recup les infos de séance crée l'objet et l'ajouté dans matière
-        this.seance(input, m);
-
-        //maybe ca ca va dans seance: this.expect("+", input[0]);
-        //ajout dans parsed de la matière avec ses séances 
-        this.parsedMatiere.push(m);
-        //verif si il reste qqlchose si oui on relance cette fonction 
-        if(input.lenght > 0)
-        {
-            this.matiere(input);
-        }
-        return true;
-    }else{
-        return false; 
+        this.seance(input, matiere);
     }
-    
-    
-    
-    
-
-} 
-
-CruParser.prototype.seance = function(input)
-{
-
+    //console.log(matiere);
+    //console.log(input);
+    this.parsedMatiere.push(matiere);
+    if(input.length > 0 )
+    {
+        if(this.checkPlus(input))
+        {
+            this.Matiere(input);
+        }
+    }
 }
 
+CruParser.prototype.seance = function(input, curMat)
+{
+    if(this.check("1", input))
+    {
+        t = input.shift();
+        if(this.check("P", input))
+        {
+            var p = input.shift();
+            if(this.check("H", input))
+            {
+                var c = input.shift();
+                var g = input.shift();
+                if(this.check("S", input))
+                {
+                    var s = input.shift();
+                    var ss = s.substring(0, s.length -2);
+                }
+            }
+        }
+    }
+    var seance = new Seance(t,p,c,g,ss);
+    curMat.addSeance(seance);
+   }
+
+module.exports = CruParser;
 
 
 
