@@ -25,4 +25,4 @@ fs.readFile(chemin, 'utf8', (err, data) => {
 });
 
 
-// a noter que je sais pas comment sortir les données du fs.readfile donc vous devez rester dedans si vous avez besoin des données 
+// a noter que je saiffffs pas comment sortir les données du fs.readfile donc vous devez rester dedans si vous avez besoin des données 
