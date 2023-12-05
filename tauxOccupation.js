@@ -111,24 +111,43 @@ function calcOccupation(parsedMatiere)
     {
         salleOccupation.push([seance[0],calcTimeCrenaux(seance[1])]);
     }
-
-    var salleTot = [];
-    
-    while(salleOccupation.length != 0)
+    var salleVide = [];
+    for(salle of salleOccupation)
     {
-        var cur = salleOccupation.shift();
-        for(salle of salleTot)
+        salleVide.push([salle[0]]);
+    }
+    //console.log(salleVide);
+    var salleString = [];
+    for(salle of salleVide)
+    {   
+        salleString.push(salle[0]);
+    }
+    
+    const salleUnique = [];
+    for(salle of salleString)
+    {
+        if(!salleUnique.includes(salle))
         {
-            if(salle[0] == cur[0])
-            {
-                salle[1] += cur[1];
-            }
-            else{
-                salleTot.push(cur);
-            }
+            salleUnique.push(salle);
         }
+    }//console.log(typeof(salleUnique[0]));
+
+    var result = [];
+    for(let i=0; i < salleOccupation.length; i++)
+    {
+        var index = salleUnique.indexOf(salleOccupation[i][0])
+        //result[index] = [salleOccupation[i][0], result[index][1] + salleOccupation[i][1]]
+        if(index + 1 > result.length)
+        {
+            result.push([salleOccupation[i][0],salleOccupation[i][1]]);
+        }else{result[index][1] += salleOccupation[i][1];}
+        
+        
+
         
     }
+    console.log(result);
+    
 }
 
 
