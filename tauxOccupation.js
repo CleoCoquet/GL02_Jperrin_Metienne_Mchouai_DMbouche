@@ -146,45 +146,46 @@ function calcOccupation(parsedMatiere)
 
         
     }
-    console.log(result);
-    
+    //console.log(result);
+    return result;
 }
 
 
 function tauxOccupation(parsedMatiere)
 {
-    
-
-
-}
-var chemin = "./sujetA_data/ST/edt.cru";
-// affichage du taux d'occupation 
-fs.readFile(chemin, 'utf8', (err, data) => {
-    if (err) {
-        console.error("Erreur de lecture du fichier :", err);
-        return;
-    }
-
-    const parser = new CruParser();
-    parser.parse(data);
-
-    // Appelle la fonction pour afficher le taux d'occupation 
-    //tauxOccupation(parser.parsedMatiere);
-    /*var t ="17";
-    var i = parseInt(t);
-    var c = "2";
-    var j = parseInt(c);
-    var e = i + j;
-    var cre = "abc"
-    var deb = cre[0] + cre[1];
-    
-    if(a[0] === " ")
+    var salleTauxOccupation = calcOccupation(parsedMatiere);
+    for(salle of salleTauxOccupation)
     {
-        console.log("c bon ");
-    }*/
-    //var a = calcTimeCrenaux("MA 9:30-11:30");
-    //console.log(a);
-    calcOccupation(parser.parsedMatiere);
-    
-})
+        salle[1] = ((salle[1]*100)/88).toFixed(2);
+        console.log("la salle : " + salle[0] + " est occupé " + salle[1] + "% du temps");
+    }
+}
+
+
+function getAllParsedMatiere()
+{
+    var dir = ["AB","CD","EF","GH","IJ","KL","MN","OP","QR","ST"];
+    var parser = new CruParser();
+    var allParsedMatiere = [];
+    for(file of dir)
+    {
+        var chemin = "./sujetA_data/"+file+"/edt.cru";
+        var buffer = fs.readFileSync(chemin);
+        var data = buffer.toString('utf8');
+        parser.parse(data);
+        for(matiere of parser.parsedMatiere)
+        {
+            allParsedMatiere.push(matiere);
+        }
+        parsedMatiere = [];
+    }
+    //console.log(allParsedMatiere);
+    return allParsedMatiere;
+}
+var allParsedMatiere = getAllParsedMatiere();
+
+tauxOccupation(allParsedMatiere);
+
+
+
 
