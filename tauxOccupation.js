@@ -29,6 +29,7 @@ function recupSalleSeance(parsedMatiere)
     }
     tseances.sort();
     //console.log(tseances);
+    return tseances;
 }
 
 function getHeureFromCrenaux(crenau)
@@ -104,9 +105,29 @@ function calcOccupation(parsedMatiere)
     // on dit qu'une salle peut etre occuper de 8h a 20 h la semaine et de 8h a 12 le samedi ce qui donne 12*7 + 4 soit 88h 
     //recup mon tableau [salle, seance]
     var salleSeance = recupSalleSeance(parsedMatiere);
-    for(seance of salle)
+    //console.log(salleSeance);
+    var salleOccupation = [];
+    for(seance of salleSeance)
     {
+        salleOccupation.push([seance[0],calcTimeCrenaux(seance[1])]);
+    }
 
+    var salleTot = [];
+    
+    while(salleOccupation.length != 0)
+    {
+        var cur = salleOccupation.shift();
+        for(salle of salleTot)
+        {
+            if(salle[0] == cur[0])
+            {
+                salle[1] += cur[1];
+            }
+            else{
+                salleTot.push(cur);
+            }
+        }
+        
     }
 }
 
@@ -142,8 +163,9 @@ fs.readFile(chemin, 'utf8', (err, data) => {
     {
         console.log("c bon ");
     }*/
-    calcTimeCrenaux("MA 10:30-11:30");
+    //var a = calcTimeCrenaux("MA 9:30-11:30");
+    //console.log(a);
+    calcOccupation(parser.parsedMatiere);
     
-    
-});
+})
 
