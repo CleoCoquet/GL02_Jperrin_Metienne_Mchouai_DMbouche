@@ -32,17 +32,73 @@ function recupSalleSeance(parsedMatiere)
 }
 
 function getHeureFromCrenaux(crenau)
-{
-    return crenau.substring(crenau.length - 11);
+{   
+    //enlever les 2 premier cara
+    var cre = crenau.substring(2);
+    //enlever le premier car si c'est un espace 
+    if(cre[0] === " ")
+    {
+        var cre = cre.substring(1);
+    }
+    if(crenau[0] == " ")
+    {
+        var cre = crenau.substring(1);
+    }
+    
+    return cre;
+    
 }
 
 function calcTimeCrenaux(crenau)
 {
+    var demiDeb = false;
+    var demiFin = false;
+    var cre = getHeureFromCrenaux(crenau);
+    var deb = 0;
+    var fin = 0;
     
+    if(cre[0] == 8 || cre[0] == 9)
+    {
+        deb = parseInt(cre[0]);
+        if(cre[2] != 0)
+        {
+            demiDeb = true;
+        }
+        var cree = cre.substring(5);
+    }
+    else{
+        deb = parseInt(cre[0]+cre[1]);
+        if(cre[3] != 0)
+        {
+            demiDeb = true;
+        }
+        var cree = cre.substring(6); 
+    }
+    if(demiDeb == true){deb += 0.5}
+    
+    if(cree[0] == 8 || cree[0] == 9)
+    {
+        fin = parseInt(cree[0]);
+        if(cree[2] != 0)
+        {
+            demiFin = true;
+        }
+    }
+    else{
+        fin = parseInt(cree[0]+cree[1]);
+        if(cree[3] != 0)
+        {
+            demiFin = true;
+        }
+        
+    }
+    if(demiFin == true){fin += 0.5}
+    
+    var calc = fin - deb ;
+    return calc;
 }
-{
 
-}
+
 function calcOccupation(parsedMatiere)
 {
     // on dit qu'une salle peut etre occuper de 8h a 20 h la semaine et de 8h a 12 le samedi ce qui donne 12*7 + 4 soit 88h 
@@ -74,7 +130,20 @@ fs.readFile(chemin, 'utf8', (err, data) => {
 
     // Appelle la fonction pour afficher le taux d'occupation 
     //tauxOccupation(parser.parsedMatiere);
-    //var t ="MA 17:00-19:00"
-    //console.log(getHeureFromCrenaux(t));
+    /*var t ="17";
+    var i = parseInt(t);
+    var c = "2";
+    var j = parseInt(c);
+    var e = i + j;
+    var cre = "abc"
+    var deb = cre[0] + cre[1];
+    
+    if(a[0] === " ")
+    {
+        console.log("c bon ");
+    }*/
+    calcTimeCrenaux("MA 10:30-11:30");
+    
+    
 });
 
