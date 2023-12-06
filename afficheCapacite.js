@@ -6,18 +6,34 @@ const Matiere = require('./Matiere');
 const Seance = require('./Seance');
 
 function trouverCapacitePourSalle(salleInput, parsedMatiere) {
-    for (const matiere of parsedMatiere) {
-        for (const seance of matiere.seances) {
-            if (seance.salle === salleInput) {
-                console.log(`Capacité maximale de la salle ${salleInput} : ${seance.nbPlace}`);
-                return;  // Arrêter la recherche dès que la salle est trouvée
+    const dir = ["AB", "CD", "EF", "GH", "IJ", "KL", "MN", "OP", "QR", "ST"];
+
+    for (const dossier of dir) {
+        const chemin = `./sujetA_data/${dossier}/edt.cru`;
+
+        try {
+            const data = fs.readFileSync(chemin, 'utf8');
+            const parser = new CruParser();
+            parser.parse(data);
+
+            // Parcours des matières pour trouver la salle
+            for (const matiere of parser.parsedMatiere) {
+                for (const seance of matiere.seances) {
+                    if (seance.salle === salleInput) {
+                        console.log(`Capacité maximale de la salle ${salleInput} : ${seance.nbPlace}`);
+                        return;  // Arrêter la recherche dès que la salle est trouvée
+                    }
+                }
             }
+        } catch (err) {
+            // Gérer l'erreur (par exemple, le fichier n'existe pas)
+            console.error(`Erreur lors de la lecture du fichier ${chemin}:`, err);
         }
     }
     console.log(`Salle ${salleInput} non trouvée.`);
 }
 
-const chemin = "./sujetA_data/ST/edt.cru";
+
 
 // Crée une interface de lecture
 const rl = readline.createInterface({
@@ -27,19 +43,10 @@ const rl = readline.createInterface({
 
 // Demande à l'utilisateur de saisir le nom de la salle
 rl.question('Entrez le nom de la salle : ', (salleInput) => {
-    fs.readFile(chemin, 'utf8', (err, data) => {
-        if (err) {
-            console.error("Erreur de lecture du fichier :", err);
-            return;
-        }
-
-        const parser = new CruParser();
-        parser.parse(data);
-
+    
         // Appelle la fonction pour trouver la capacité de la salle
-        trouverCapacitePourSalle(salleInput, parser.parsedMatiere);
+        trouverCapacitePourSalle(salleInput, []);
 
         // Ferme l'interface de lecture
         rl.close();
-    });
 });
