@@ -28,9 +28,20 @@ function afficherSalleEtCapacité(matiereInput,parsedMatiere){
         console.log("Matière non trouvée.");
     }
 }
-//Chemin à modifier si on veut chercher dans une autre partie
-const chemin = "./sujetA_data/ST/edt.cru";
+//Fonction chemin pour changer le chemin en fonction de la matière
 
+function genererChemin(matiere){
+    var dir = ["AB","CD","EF","GH","IJ","KL","MN","OP","QR","ST"];
+    const premiereLettre=matiere[0]
+    const dossierTrouve=dir.find(dossier => dossier.includes(premiereLettre))
+    if (dossierTrouve) {
+        return `./sujetA_data/${dossierTrouve}/edt.cru`;
+    } else {
+        console.log("Matière non trouvée");
+        return null;
+    }
+
+}
 // Crée une interface de lecture
 const rl = readline.createInterface({
     input: process.stdin,
@@ -39,6 +50,7 @@ const rl = readline.createInterface({
 
 // Demande à l'utilisateur de saisir le nom de la matière
 rl.question('Entrez le nom de la matière : ', (matiereInput) => {
+    const chemin = genererChemin(matiereInput);
     fs.readFile(chemin, 'utf8', (err, data) => {
         if (err) {
             console.error("Erreur de lecture du fichier :", err);
@@ -54,4 +66,4 @@ rl.question('Entrez le nom de la matière : ', (matiereInput) => {
         // Ferme l'interface de lecture
         rl.close();
     });
-});
+})
