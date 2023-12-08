@@ -1,10 +1,51 @@
 BEGIN:VCALENDAR
-VERSION:2.0
-    BEGIN:VEVENT
-    DTSTART:20231206T080000Z
-    DTEND:20231206T100000Z
-    SUMMARY:Réunion importante
-    DESCRIPTION:Discussion sur les projets à venir
-    LOCATION:Salle de conférence
-    END:VEVENT
+    VERSION:2.0BEGIN:VEVENT
+        DTSTART:20231206T080000Z
+        DTEND:20231206T100000Z
+        SUMMARY:seance : undefined
+        DESCRIPTION:groupe : undefined
+        LOCATION:salle : undefined
+        END:VEVENT
+BEGIN:VEVENT
+        DTSTART:20231206T080000Z
+        DTEND:20231206T100000Z
+        SUMMARY:seance : undefined
+        DESCRIPTION:groupe : undefined
+        LOCATION:salle : undefined
+        END:VEVENT
+BEGIN:VEVENT
+        DTSTART:20231206T080000Z
+        DTEND:20231206T100000Z
+        SUMMARY:seance : undefined
+        DESCRIPTION:groupe : undefined
+        LOCATION:salle : undefined
+        END:VEVENT
+BEGIN:VEVENT
+        DTSTART:20231206T080000Z
+        DTEND:20231206T100000Z
+        SUMMARY:seance : undefined
+        DESCRIPTION:groupe : undefined
+        LOCATION:salle : undefined
+        END:VEVENT
+BEGIN:VEVENT
+        DTSTART:20231206T080000Z
+        DTEND:20231206T100000Z
+        SUMMARY:seance : undefined
+        DESCRIPTION:groupe : undefined
+        LOCATION:salle : undefined
+        END:VEVENT
+BEGIN:VEVENT
+        DTSTART:20231206T080000Z
+        DTEND:20231206T100000Z
+        SUMMARY:seance : undefined
+        DESCRIPTION:groupe : undefined
+        LOCATION:salle : undefined
+        END:VEVENT
+BEGIN:VEVENT
+        DTSTART:20231206T080000Z
+        DTEND:20231206T100000Z
+        SUMMARY:seance : undefined
+        DESCRIPTION:groupe : undefined
+        LOCATION:salle : undefined
+        END:VEVENT
 END:VCALENDAR
