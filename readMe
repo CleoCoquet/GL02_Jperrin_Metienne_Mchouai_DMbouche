@@ -1,0 +1,34 @@
+README contenant les explications nécessaires à l'utilisation du logiciel
+ (aide et installation, dépendances, tests et jeux de données fournis) 
+ ainsi que des explications pour les éventuels écarts au cahier des charges.
+
+Pour l'utilisation du logiciel, il n'y a pas d'installation particulière à faire,
+les jeux de données fournit sont stockée dans le dossier sujetA_data
+
+Pour l'utilisation, il faut lancer les fichiers correspondant aux 
+différentes fonctionalitées.
+
+A savoir :
+SPEC_1 : afficheSalle.js
+SPEC_2 : afficheCapacite.js
+SPEC_3 : dispoSalle.js
+SPEC_4 : disoCreneaux.js
+SPEC_5 : calendrier.js
+SPEC_6 : classementSalle.js
+SPEC_7 : edtConforme.js
+SPEC_8 : tauxOccupation.js
+
+
+écart au cahier des charges :
+- SPEC_3 : affiche les creneaux indisponible d'une salle
+- SPEC_5 : la saise utilisateur n'est pas pris en charge, néamoins 2 variables sont mis a disposition en fin de fichier pour remplacer celle-ci
+
+concernant les spec non fonctionnel :
+le logiciel est fluide 
+la norme RFC5545 est respecté
+le logiciel n'a pas d'interface graphique
+
+
+
+
+
