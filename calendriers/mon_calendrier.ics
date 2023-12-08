@@ -2,50 +2,50 @@ BEGIN:VCALENDAR
     VERSION:2.0BEGIN:VEVENT
         DTSTART:20231206T080000Z
         DTEND:20231206T100000Z
-        SUMMARY:seance : undefined
-        DESCRIPTION:groupe : undefined
-        LOCATION:salle : undefined
+        SUMMARY:seance : C1
+        DESCRIPTION:groupe : F1
+        LOCATION:salle : B101
         END:VEVENT
 BEGIN:VEVENT
         DTSTART:20231206T080000Z
         DTEND:20231206T100000Z
-        SUMMARY:seance : undefined
-        DESCRIPTION:groupe : undefined
-        LOCATION:salle : undefined
+        SUMMARY:seance : D1
+        DESCRIPTION:groupe : F1
+        LOCATION:salle : A105
         END:VEVENT
 BEGIN:VEVENT
         DTSTART:20231206T080000Z
         DTEND:20231206T100000Z
-        SUMMARY:seance : undefined
-        DESCRIPTION:groupe : undefined
-        LOCATION:salle : undefined
+        SUMMARY:seance : D2
+        DESCRIPTION:groupe : F1
+        LOCATION:salle : A105
         END:VEVENT
 BEGIN:VEVENT
         DTSTART:20231206T080000Z
         DTEND:20231206T100000Z
-        SUMMARY:seance : undefined
-        DESCRIPTION:groupe : undefined
-        LOCATION:salle : undefined
+        SUMMARY:seance : C1
+        DESCRIPTION:groupe : F1
+        LOCATION:salle : C102
         END:VEVENT
 BEGIN:VEVENT
         DTSTART:20231206T080000Z
         DTEND:20231206T100000Z
-        SUMMARY:seance : undefined
-        DESCRIPTION:groupe : undefined
-        LOCATION:salle : undefined
+        SUMMARY:seance : D1
+        DESCRIPTION:groupe : F1
+        LOCATION:salle : P101
         END:VEVENT
 BEGIN:VEVENT
         DTSTART:20231206T080000Z
         DTEND:20231206T100000Z
-        SUMMARY:seance : undefined
-        DESCRIPTION:groupe : undefined
-        LOCATION:salle : undefined
+        SUMMARY:seance : D2
+        DESCRIPTION:groupe : F1
+        LOCATION:salle : P101
         END:VEVENT
 BEGIN:VEVENT
         DTSTART:20231206T080000Z
         DTEND:20231206T100000Z
-        SUMMARY:seance : undefined
-        DESCRIPTION:groupe : undefined
-        LOCATION:salle : undefined
+        SUMMARY:seance : D3
+        DESCRIPTION:groupe : F1
+        LOCATION:salle : P101
         END:VEVENT
 END:VCALENDAR

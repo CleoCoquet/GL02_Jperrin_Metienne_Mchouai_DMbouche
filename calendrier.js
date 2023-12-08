@@ -7,7 +7,20 @@ const Matiere = require('./Matiere');
 const Seance = require('./Seance');
 const fs = require('fs');
 
+function nombreJoursEntreDeuxDates(debut, fin) 
+{
+    // Convertir les dates en objets Date
+    const dateDebut = new Date(debut);
+    const dateFin = new Date(fin);
 
+    // Calcul de la différence entre les deux dates en millisecondes
+    const differenceEnMillisecondes = dateFin.getTime() - dateDebut.getTime();
+
+    // Convertir la différence en jours
+    const differenceEnJours = differenceEnMillisecondes / (1000 * 3600 * 24);
+  
+    return differenceEnJours;
+  }
 function getAllParsedMatiere()
 {
     var dir = ["AB","CD","EF","GH","IJ","KL","MN","OP","QR","ST"];
@@ -25,7 +38,7 @@ function getAllParsedMatiere()
         }
         parsedMatiere = [];
     }
-    //console.log(allParsedMatiere);
+    
     return allParsedMatiere;
 }
 var allParsedMatiere = getAllParsedMatiere();
@@ -106,34 +119,11 @@ function AskMatiere()
 
 
 //var dates = AskDates();
-/*var dates = ["24-05-2000","2023-12-06"]
-//console.log(dates[1].getDay());
-var deb = new Date(dates[1]);
-console.log(deb.getDay());*/
-
-/*const date = new Date('2023-12-06'); // Remplacez '2023-12-06' par votre date
-
-const joursSemaine = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-const jourDeLaSemaine = joursSemaine[date.getDay()];
-
-console.log(`Le ${date.toLocaleDateString()} est un ${jourDeLaSemaine}.`);
-
-
-*/
 
 
 
-/*
-une fois que j'ai reussi a recup les matières dans 'le bon ordre'
-get seance de chaques matieres 
-get le jour de debut 
-compare tout les premier car pour voir les jours des seances  
-pour chaque seance qui coorespondent au jour donnée crée un evt 
-passé au jour suivant, créé les evt ainsi de suite jusqu'a arrivé au jour de fin 
 
-*/
 
-var askMat = ["SC00","SC01","SC04"];
 //fonctionne, allmat = toute les matiere dispo, ask mat = matiere du user, return tableau des seances correspondant aux ask mat
 function getSeanceMatiere(allMat, askMat)
 {
@@ -164,10 +154,6 @@ function getSeanceMatiere(allMat, askMat)
     return seances;
 }
 
-var a = getSeanceMatiere(allParsedMatiere,askMat)
-//console.log(a);
-
-
 function getHeureFromCrenaux(crenau)
 {   
     //enlever les 2 premier cara
@@ -187,21 +173,48 @@ function getHeureFromCrenaux(crenau)
 }
 
 
-function prepareDate(seances)
+//seances des differentes matiere de l'utilisateur, dates = date saisi par l'utilisateur return seance avec les date au bon format 
+function prepareDate(seances, dates)
 {
-    for(const s of seance)
+    var nbJoursDemander = nombreJoursEntreDeuxDates(dates[0],dates[1]);
+    var deb = new Date(dates[0]);
+    
+    var jourSeance = ["D ","L ","MA","ME","J ","V ","S "];
+    var mois = ["01","02","03","04","05","06","07","08","09","10","11","12"]
+    var jourNum = ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
+    
+    var dateCourante = deb;
+    for(let i=0; i<nbJoursDemander;i++)
     {
+        
+        var jourDate = dateCourante.getDay();
+        var moisDate = dateCourante.getMonth();
+        
 
+        for(const s of seances)
+        {   
+            
+            
+            if(s.crenaux.substring(0,2) == jourSeance[jourDate])
+            {
+                var heure = getHeureFromCrenaux(s.crenaux);
+                var debFin = heure.split("-");
+                var final = [`${dateCourante.getFullYear()}-${mois[moisDate]}-${jourNum[dateCourante.getDate()-1]}T${debFin[0]}:00Z`,`${dateCourante.getFullYear()}-${mois[moisDate]}-${jourNum[dateCourante.getDate()-1]}T${debFin[1]}:00Z`];
+                s.creneaux = final
+            }
+        }
+        dateCourante.setDate(dateCourante.getDate() + 1);
+        
     }
+    return seances;
+    
 }
-//var a = prepareDate(a);
-
 
 //seances = liste de toutes les seance en fontions des matière
 function createEvents(seances)
 {
     var events = [];
-
+    
     for(const seance of seances)
     {
 
@@ -221,16 +234,6 @@ function createEvents(seances)
     return events;
 
 }
-var e = createEvents(a);
-//console.log(typeof(e[0].start));
-var d = new Date('2023-12-06T08:00:00Z');
-console.log(d);
-console.log(formatDate(d));
-
-/*
-    start: new Date('2023-12-06T08:00:00Z'),
-    end: new Date('2023-12-06T10:00:00Z'),
-*/
 
 
 //events = list d'objet event 
@@ -239,12 +242,9 @@ function createIcsFile(events)
     var file = ``;
     file += `BEGIN:VCALENDAR
     VERSION:2.0`;
-
-
-    
+  
     for(const event of events)
-    {   console.log(event);
-        
+    {   
         var ev = `BEGIN:VEVENT
         DTSTART:${formatDate(event.start)}
         DTEND:${formatDate(event.end)}
@@ -260,3 +260,9 @@ function createIcsFile(events)
     fs.writeFileSync(filepath, file);
     console.log(`Fichier ${filepath} créé avec succès.`);
 }
+
+
+var askMat = ["SC00","SC01","SC04"];
+var askDates = ["2023-12-04","2024-01-03"];
+//il manque les fontion askmat et askdate a faire fonctionner elle sont remplace par des variable pour le moment 
+createIcsFile(createEvents(prepareDate(getSeanceMatiere(getAllParsedMatiere(),askMat),askDates)));
