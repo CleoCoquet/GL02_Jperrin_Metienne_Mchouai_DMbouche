@@ -34,6 +34,7 @@ function trouverCapacitePourSalle(salleInput, parsedMatiere) {
 }
 
 
+module.exports = trouverCapacitePourSalle;
 
 // Crée une interface de lecture
 const rl = readline.createInterface({
