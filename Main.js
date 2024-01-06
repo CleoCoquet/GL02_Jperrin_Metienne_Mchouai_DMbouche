@@ -8,6 +8,8 @@ const cruParser = require('./CruParser');
 const dispoCrenaux = require('./dispoCrenaux');
 const afficheCapacite = require('./afficheCapacite');
 const matiere = require('./Matiere');
+const edtConforme = require('./edtConforme');
+const tauxOccupation = require('./tauxOccupation');
 const fs = require('fs');
 const readlineSync = require('readline-sync');
 
@@ -22,11 +24,15 @@ console.log("2. Obtenir la capacité d'une salle");
 console.log("3. Rechercher les salles libres");
 console.log("4. Rechercher les créneaux libres");
 console.log("5. Exporter un calendrier");
-console.log("6. Quitter");
+console.log("6. classemnt des salles");
+console.log("7. edt conforme");
+console.log("8. taux occupation");
+console.log("9. Quitter");
+
 
 // create a switch case to call the different functions
 let choix = readlineSync.question("Votre choix : ");
-switch(choix){
+switch (choix) {
     case "1":
         console.log("Vous avez choisi de rechercher les salles d'un cours");
         afficheSalle.runAfficheSalle();
@@ -48,7 +54,16 @@ switch(choix){
         calendrier.runCalendrier();
         break;
     case "6":
-        console.log("Vous avez choisi de quitter");
+        console.log("Vous avez choisi le classement des salles");
+        classementSalle.runClassementSalle();
+        break;
+    case "7":
+        console.log("Vous avez choisi l'edt conforme");
+        edtConforme.runedtConforme();
+        break;
+    case "8":
+        console.log("Vous avez choisi le taux d'occupation");
+        tauxOccupation.runTauxOccupation();
         break;
     default:
         console.log("Veuillez choisir une option valide");

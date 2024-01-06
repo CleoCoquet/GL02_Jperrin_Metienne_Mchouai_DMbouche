@@ -5,6 +5,7 @@ const CruParser = require('./CruParser');
 const Matiere = require('./Matiere');
 const Seance = require('./Seance');
 
+function runClassementSalle(){
 var classement = [];
 let i =0;
 c=0;
@@ -47,4 +48,6 @@ const chemin = "./sujetA_data/ST/edt.cru";
 
         // Appelle la fonction pour trouver la capacité de la salle
         trouverCapacitePourSalle(parser.parsedMatiere);
-    });
+    });}
+
+module.exports = {runClassementSalle};

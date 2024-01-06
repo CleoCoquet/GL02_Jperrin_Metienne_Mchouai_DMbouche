@@ -70,5 +70,4 @@ rl.question('Entrez le nom de la matière : ', (matiereInput) => {
         rl.close();
     });
 })};
-
 module.exports = runAfficheSalle;

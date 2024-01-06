@@ -2,7 +2,9 @@ README contenant les explications nécessaires à l'utilisation du logiciel
  (aide et installation, dépendances, tests et jeux de données fournis) 
  ainsi que des explications pour les éventuels écarts au cahier des charges.
 
-Pour l'utilisation du logiciel, il n'y a pas d'installation particulière à faire,
+
+Besoin de instale Readline-sync pour l'utilisation du logiciel
+npm install readline-sync
 les jeux de données fournit sont stockée dans le dossier sujetA_data
 
 Pour l'utilisation, il faut lancer les fichiers correspondant aux 

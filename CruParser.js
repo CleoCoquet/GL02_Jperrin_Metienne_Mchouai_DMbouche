@@ -120,6 +120,7 @@ CruParser.prototype.seance = function(input, curMat)
     }
     var seance = new Seance(t,p,c,g,ss);
     curMat.addSeance(seance);
+
    }
 
 module.exports = CruParser;
