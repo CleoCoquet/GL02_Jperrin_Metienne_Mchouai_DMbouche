@@ -23,3 +23,34 @@ console.log("3. Rechercher les salles libres");
 console.log("4. Rechercher les créneaux libres");
 console.log("5. Exporter un calendrier");
 console.log("6. Quitter");
+
+// create a switch case to call the different functions
+let choix = readlineSync.question("Votre choix : ");
+switch(choix){
+    case "1":
+        console.log("Vous avez choisi de rechercher les salles d'un cours");
+        afficheSalle.runAfficheSalle();
+        break;
+    case "2":
+        console.log("Vous avez choisi d'obtenir la capacité d'une salle");
+        afficheCapacite.runAfficheCapacite();
+        break;
+    case "3":
+        console.log("Vous avez choisi de rechercher les salles libres");
+        dispoSalle.runDispoSalle();
+        break;
+    case "4":
+        console.log("Vous avez choisi de rechercher les créneaux libres");
+        dispoCrenaux.runDispoCrenaux();
+        break;
+    case "5":
+        console.log("Vous avez choisi d'exporter un calendrier");
+        calendrier.runCalendrier();
+        break;
+    case "6":
+        console.log("Vous avez choisi de quitter");
+        break;
+    default:
+        console.log("Veuillez choisir une option valide");
+        break;
+}

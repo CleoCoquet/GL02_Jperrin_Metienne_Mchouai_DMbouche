@@ -48,6 +48,8 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+
+function runAfficheSalle(){
 // Demande à l'utilisateur de saisir le nom de la matière
 rl.question('Entrez le nom de la matière : ', (matiereInput) => {
     const chemin = genererChemin(matiereInput);
@@ -66,4 +68,4 @@ rl.question('Entrez le nom de la matière : ', (matiereInput) => {
         // Ferme l'interface de lecture
         rl.close();
     });
-})
+})};

@@ -1,7 +1,7 @@
 var Matiere = require('./Matiere');
 var Seance = require('./Seance');
 
-
+//parses through the files
 //CruParser
 var CruParser = function()
 {
