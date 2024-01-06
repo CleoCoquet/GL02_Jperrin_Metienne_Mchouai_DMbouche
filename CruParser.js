@@ -34,7 +34,7 @@ CruParser.prototype.parse = function(data)
 //checkplus regarde le 1er caractere du 1er elt et regarde si c'est un plus sinon il taige le 1 elt et se rappelle 
 CruParser.prototype.checkPlus = function(input)
 {
-    if(input[0][0] == "+")
+    if(input[0][0] === "+")
     {
         //console.log("+ trouve");
         
