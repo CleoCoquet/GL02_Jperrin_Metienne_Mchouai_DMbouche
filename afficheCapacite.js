@@ -36,18 +36,22 @@ function trouverCapacitePourSalle(salleInput, parsedMatiere) {
 
 module.exports = trouverCapacitePourSalle;
 
+
+function runAfficheCapacite() {
+
 // Crée une interface de lecture
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
 
 // Demande à l'utilisateur de saisir le nom de la salle
-rl.question('Entrez le nom de la salle : ', (salleInput) => {
-    
+    rl.question('Entrez le nom de la salle : ', (salleInput) => {
+
         // Appelle la fonction pour trouver la capacité de la salle
         trouverCapacitePourSalle(salleInput, []);
 
         // Ferme l'interface de lecture
         rl.close();
-});
+    });
+}

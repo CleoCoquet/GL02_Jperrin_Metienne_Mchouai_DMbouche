@@ -42,6 +42,7 @@ function genererChemin(matiere){
     }
 
 }
+
 // Crée une interface de lecture
 const rl = readline.createInterface({
     input: process.stdin,
@@ -69,3 +70,5 @@ rl.question('Entrez le nom de la matière : ', (matiereInput) => {
         rl.close();
     });
 })};
+
+module.exports = runAfficheSalle;

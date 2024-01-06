@@ -3,6 +3,7 @@ const fs = require('fs');
 const readlineSync = require('readline-sync');
 const CruParser = require('./CruParser');
 
+function runDispoCrenaux() {
 function getAllParsedMatiere() {
     var dir = ["AB", "CD", "EF", "GH", "IJ", "KL", "MN", "OP", "QR", "ST"];
     var parser = new CruParser();
@@ -95,4 +96,5 @@ if (sallesDisponibles.length > 0) {
     console.log(sallesDisponibles);
 } else {
     console.log(`Aucune salle disponible pour l'horaire ${horaireUtilisateur}.`);
-}
+}}
+module.exports = runDispoCrenaux;
