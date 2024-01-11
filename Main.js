@@ -5,7 +5,7 @@ const dispoSalle = require('./dispoSalle');
 const afficheSalle = require('./afficheSalle');
 const classementSalle = require('./classementSalle');
 const cruParser = require('./CruParser');
-const dispoCrenaux = require('./dispoCrenaux');
+const dispoCrenaux = require('./dispoCreneaux');
 const afficheCapacite = require('./afficheCapacite');
 const matiere = require('./Matiere');
 const edtConforme = require('./edtConforme');
@@ -50,7 +50,7 @@ while (choix != "9") {
             break;
         case "4":
             console.log("Vous avez choisi de rechercher les créneaux libres");
-            dispoCrenaux.runDispoCrenaux();
+            dispoCrenaux.runDispoCreneaux();
             break;
         case "5":
             console.log("Vous avez choisi d'exporter un calendrier");
