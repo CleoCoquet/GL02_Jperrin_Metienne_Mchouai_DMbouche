@@ -24,7 +24,7 @@ console.log("2. Obtenir la capacité d'une salle");
 console.log("3. Rechercher les salles libres");
 console.log("4. Rechercher les créneaux libres");
 console.log("5. Exporter un calendrier");
-console.log("6. classemnt des salles");
+console.log("6. classement des salles");
 console.log("7. edt conforme");
 console.log("8. taux occupation");
 console.log("9. Quitter");

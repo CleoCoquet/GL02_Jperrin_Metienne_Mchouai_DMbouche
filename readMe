@@ -7,8 +7,8 @@ Besoin de instale Readline-sync pour l'utilisation du logiciel
 npm install readline-sync
 les jeux de données fournit sont stockée dans le dossier sujetA_data
 
-Pour l'utilisation, il faut lancer les fichiers correspondant aux 
-différentes fonctionalitées.
+Pour l'utilisation, il faut lancer les choix correspondant aux
+différentes fonctionalitées en main.
 
 A savoir :
 SPEC_1 : afficheSalle.js
@@ -31,34 +31,4 @@ la norme RFC5545 est respecté
 le logiciel n'a pas d'interface graphique
 
 
-
-README containing explanations on how to use the software
- (help and installation, dependencies, tests and supplied data sets)
- as well as explanations of any deviations from the specifications.
-
-No special installation is required to use the software,
-the supplied data sets are stored in the subjectA_data folder.
-
-To use it, you need to launch the files corresponding to the
-functions.
-
-Namely :
-SPEC_1 : afficheSalle.js
-SPEC_2 : afficheCapacite.js
-SPEC_3 : dispoSalle.js
-SPEC_4 : disoCreneaux.js
-SPEC_5 : calendar.js
-SPEC_6 : classificationRoom.js
-SPEC_7 : edtConforme.js
-SPEC_8 : occupancyrate.js
-
-
-deviation from specifications :
-- SPEC_3: displays unavailable levels for a room
-- SPEC_5 : user input is not supported, however 2 variables are provided at the end of the file to replace it.
-
-concerning non-functional spec :
-the software is fluid
-RFC5545 is respected
-software has no graphical interface
 
