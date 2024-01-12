@@ -10,7 +10,7 @@ function afficherSalleEtCapacité(matiereInput,parsedMatiere){
     const matiereTrouvee = parsedMatiere.find(matiere => matiere.nomMatiere === matiereInput);
 
     if (matiereTrouvee) {
-        console.log("Informations sur les salles pour la matière", matiereInput, ":");
+        console.log("Informations sur les salles pour suivre la matière", matiereInput, ":");
         
         // Utiliser un ensemble pour stocker les salles déjà affichées
         const sallesDejaAffichees = new Set();
