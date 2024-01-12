@@ -97,4 +97,4 @@ if (sallesDisponibles.length > 0) {
 } else {
     console.log(`Aucune salle disponible pour l'horaire ${horaireUtilisateur}.`);
 }}
-module.exports = runDispoCrenaux;
+module.exports = { runDispoCrenaux };

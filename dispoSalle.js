@@ -70,4 +70,4 @@ function trouverCreneauxIndisponibles(planningSalle, salleCible) {
 
     return Array.from(creneauxIndisponibles);
 }}
-module.exports = runDispoSalle;
+module.exports = { runDispoSalle };

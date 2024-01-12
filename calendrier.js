@@ -245,4 +245,4 @@ function runCalendrier() {
     createIcsFile(createEvents(prepareDate(getSeanceMatiere(getAllParsedMatiere(), askMat), askDates)));
 }
 
-module.exports = runCalendrier;
+module.exports = {runCalendrier};

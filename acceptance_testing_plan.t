@@ -34,5 +34,42 @@ Description : le code renvoie le message "salle non existante"
 Résultat : succès
 Description : le code ne renvoie pas les doublons 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Test réalisé avec un processeur windows 11 ryzen 5000
 
+1-utilisation sous un OS autre que windows
+Résultat : Succès
+description : Le code fonctionne sans problème sous windows 11
+
+2-Test de sélection de sujets inexistants
+Résultat : succès
+Description : le code renvoie un console.log indiquant que le sujet n'existe pas.
+
+3-utilisation sans pièces
+Résultat : partiel
+description : L'utilisation sans les salles renvoie juste des logs vides
+
+4-Utilisation des options disponibles... sans arguments :
+Résultat : succès
+description : un message est retourné vous demandant d'entrer des arguments
+
+5-Test en ajoutant de nouveaux fichiers .cru
+Résultat : succès : Succès
+Description : L'analyseur de cru vérifie les nouveaux fichiers et les ajoute au fichier de données : L'analyseur Cru vérifie les nouveaux fichiers et les ajoute au fichier de données.
+
+6-Test sous différents environnements
+Résultat : succès
+Description : Le code peut être exécuté sans problème dans différents environnements : Le code peut être exécuté sous différents environnements sans aucun problème.
+
+7-Utiliser dans un ordre différent
+Résultat : le code peut être utilisé dans différents environnements sans problème : Partiel
+Description : Plusieurs commandes ont été testées sans problème : Plusieurs ordres ont été testés sans problème, mais le code n'a pas été testé dans tous les ordres possibles.
+
+8-Utilisation de pièces inexistantes
+Résultat : succès
+Description : le code renvoie le message "salle inexistante".
+
+9-Tester la classification des chambres avec des doublons
+Résultat : le code renvoie le message "salle inexistante" : Succès
+Description : le code ne renvoie pas de doublons

@@ -55,4 +55,4 @@ function runAfficheCapacite() {
     });
 }
 
-runAfficheCapacite();
+module.exports = { runAfficheCapacite };

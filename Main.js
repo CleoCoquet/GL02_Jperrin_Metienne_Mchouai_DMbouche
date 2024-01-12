@@ -39,10 +39,11 @@ while (choix != "9") {
         case "1":
             console.log("Vous avez choisi de rechercher les salles d'un cours");
             afficheSalle.runAfficheSalle();
-            break;
+            break;1
+
         case "2":
             console.log("Vous avez choisi d'obtenir la capacité d'une salle");
-            afficheCapacite.runAfficheCapacite();
+            afficheCapacite.runAfficheCapacite()
             break;
         case "3":
             console.log("Vous avez choisi de rechercher les salles libres");
@@ -50,7 +51,7 @@ while (choix != "9") {
             break;
         case "4":
             console.log("Vous avez choisi de rechercher les créneaux libres");
-            dispoCrenaux.runDispoCreneaux();
+            dispoCrenaux.runDispoCrenaux()
             break;
         case "5":
             console.log("Vous avez choisi d'exporter un calendrier");
