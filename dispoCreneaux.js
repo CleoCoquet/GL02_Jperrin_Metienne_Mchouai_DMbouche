@@ -5,9 +5,11 @@ const CruParser = require('./CruParser');
 
 function runDispoCrenaux() {
 function getAllParsedMatiere() {
-    var dir = ["AB", "CD", "EF", "GH", "IJ", "KL", "MN", "OP", "QR", "ST"];
-    var parser = new CruParser();
-    var allParsedMatiere = [];
+
+    // Utilisation de const et let à la place de var
+    const dir = ["AB", "CD", "EF", "GH", "IJ", "KL", "MN", "OP", "QR", "ST"];
+    const parser = new CruParser();
+    let allParsedMatiere = [];
 
     for (const file of dir) {
         var chemin = "./sujetA_data/" + file + "/edt.cru";
@@ -25,17 +27,18 @@ function getAllParsedMatiere() {
     return allParsedMatiere;
 }
 
-function recupSalleSeance(parsedMatiere) {
-    var tseances = [];
-    for (const matiere of parsedMatiere) {
-        for (const seance of matiere.seances) {
-            var salleSeance = [seance.salle, seance.crenaux];
-            tseances.push(salleSeance);
+    
+ function recupSalleSeance(parsedMatiere) {
+     // Simplification de la fonction pour ne pas avoir à utiliser de tableaux temporaires
+        const tseances = [];
+        for (const matiere of parsedMatiere) {
+            for (const seance of matiere.seances) {
+                tseances.push([seance.salle, seance.crenaux]);
+            }
         }
+        tseances.sort();
+        return tseances;
     }
-    tseances.sort();
-    return tseances;
-}
 
 
 function isHoraireChevauche(horaire1, horaire2) {
