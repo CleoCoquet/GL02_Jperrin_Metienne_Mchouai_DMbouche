@@ -35,7 +35,8 @@ function runCalendrier() {
             for (matiere of parser.parsedMatiere) {
                 allParsedMatiere.push(matiere);
             }
-            parsedMatiere = [];
+            // Réinitialise le tableau parsedMatiere du parser à la fin de chaque itération
+            parser.parsedMatiere = [];
         }
 
         return allParsedMatiere;
@@ -45,7 +46,8 @@ function runCalendrier() {
 
 
     function waitForUserInfo(empty) {
-        if (empty.lenght == 0) {
+        /// Correction d'une faute de frappe length et non lenght 
+        if (empty.length == 0) {
             setTimeout(() => {
                 console.log(`en attente de l'input`);
             }, 3000);
