@@ -100,7 +100,7 @@ function runCalendrier() {
         });
 
         var matieres = [];
-        mat.question('Veuillez entrer vos matière separer d un tiret (SC00-SC01-SC02)', (input) => {
+        mat.question('Veuillez entrer vos matière separer par un tiret (SC00-SC01-SC02)', (input) => {
             matieres = input.split("-");
             mat.close();
         });
