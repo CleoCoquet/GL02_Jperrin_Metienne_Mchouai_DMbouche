@@ -6,7 +6,8 @@ const Matiere = require('./Matiere');
 const Seance = require('./Seance');
 
 function runClassementSalle(){
-var classement = [];
+ // Utilisation de const pour les variables constantes
+    const classement = [];
 let i =0;
 c=0;
 
@@ -24,9 +25,8 @@ function trouverCapacitePourSalle(parsedMatiere) {
     }
 
     //Retirer les doublons salle/nbPlaces identiques
-    let stringArray = classement.map(JSON.stringify);
-    let uniqueStringArray = new Set(stringArray);
-    classement = Array.from(uniqueStringArray, JSON.parse);
+     // Utilisation d'un ensemble pour éliminer les doublons
+        const uniqueClassement = Array.from(new Set(classement.map(JSON.stringify)), JSON.parse);
 
     //Afficher le tableau trié 
     console.table(classement.sort((a,b)=>{
