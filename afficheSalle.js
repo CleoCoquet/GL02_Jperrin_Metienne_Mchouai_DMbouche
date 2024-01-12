@@ -31,15 +31,16 @@ function afficherSalleEtCapacité(matiereInput,parsedMatiere){
 //Fonction chemin pour changer le chemin en fonction de la matière
 
 function genererChemin(matiere){
-    var dir = ["AB","CD","EF","GH","IJ","KL","MN","OP","QR","ST"];
+    const dir = ["AB","CD","EF","GH","IJ","KL","MN","OP","QR","ST"];
     const premiereLettre=matiere[0]
     const dossierTrouve=dir.find(dossier => dossier.includes(premiereLettre))
-    if (dossierTrouve) {
-        return `./sujetA_data/${dossierTrouve}/edt.cru`;
-    } else {
-        console.log("Matière non trouvée");
-        return null;
+    // Gestion de l'erreur plus pertinente
+    if (!dossierTrouve) {
+        throw new Error("Matière non trouvée");
     }
+
+    return `./sujetA_data/${dossierTrouve}/edt.cru`;
+    
 
 }
 
